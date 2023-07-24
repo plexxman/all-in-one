@@ -35,6 +35,10 @@ function showPassword(id) {
     } else if (xhr.status === 500) {
       disableSpinner()
       showError("Server error. Please check the mastercontainer logs for details.");
+      // Reload after 10s since it is expected that the updated view is shown (e.g. after starting containers)
+      setTimeout(function(){
+        window.location.reload(1);
+      }, 10000);
     } else {
       // If the responose is not one of the above, we should reload to show the latest content
       window.location.reload(1);
